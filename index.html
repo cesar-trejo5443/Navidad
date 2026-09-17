@@ -34,10 +34,114 @@
             overflow-y: auto;
         }
 
+        #bienvenida-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: radial-gradient(#25332c 1px, transparent 1px), radial-gradient(#25332c 1px, var(--fondo-oscuro) 1px);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+        }
+
+        .modal-apertura {
+            background: linear-gradient(145deg, #8b1822, var(--rojo-navidad));
+            border: 2px solid var(--dorado);
+            border-radius: 16px;
+            padding: 35px 25px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .modal-apertura .inner-frame {
+            border: 1px dashed var(--dorado-claro);
+            border-radius: 12px;
+            padding: 25px 15px;
+        }
+
+        .modal-apertura .icon-sobre {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+            animation: reboteSuave 2s infinite ease-in-out;
+        }
+
+        @keyframes reboteSuave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .modal-apertura h2 {
+            font-family: 'Georgia', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .modal-apertura p {
+            font-size: 0.85rem;
+            color: var(--dorado-claro);
+            margin-bottom: 22px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-abrir-invitacion {
+            display: inline-block;
+            background: linear-gradient(to right, var(--dorado), #c49a2c);
+            color: #1a1a1a;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            padding: 12px 26px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .btn-abrir-invitacion:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.5);
+        }
+
+        #btn-control-audio {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(122, 19, 27, 0.85);
+            border: 1px solid var(--dorado);
+            color: var(--dorado-claro);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        #btn-control-audio:hover {
+            transform: scale(1.1);
+        }
+
         .invitation-card {
             background-color: #ab1d29;
             background-image: url(nieve_2.gif);
-            /*background: linear-gradient(145deg, #8b1822, #550415);*/
             width: 100%;
             max-width: 550px;
             border-radius: 16px;
@@ -47,7 +151,6 @@
             border: 2px solid var(--dorado);
             position: relative;
             margin: auto 0;
-            
         }
 
         .inner-border {
@@ -91,6 +194,7 @@
             margin: 20px auto;
             width: 80%;
         }
+
         .foto_fam {
             display: block;
             width: 100%;
@@ -109,7 +213,6 @@
             gap: 15px;
             margin: 25px 0;
             text-align: left;
-            
         }
 
         .detail-item {
@@ -120,7 +223,15 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            
+        }
+
+        .detail-item a.link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
         }
 
         .detail-item span.emoji {
@@ -140,42 +251,50 @@
             margin: 0;
         }
 
-        .btn-rsvp {
-            display: inline-block;
-            background: linear-gradient(to right, #d4af37, #c49a2c);
-            color: #1a1a1a;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.9rem;
-            padding: 12px 28px;
-            border-radius: 50px;
-            margin-top: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        table {
+            border-collapse: collapse;
         }
 
-        .btn-rsvp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+        th, td {
+            padding: 2px 6px;
+            text-align: left;
+            font-size: 0.95rem;
         }
 
-        .footer-note {
-            font-size: 0.8rem;
+        th {
             color: var(--dorado-claro);
-            margin-top: 20px;
-            opacity: 0.85;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
-    
+
+    <audio id="musica" loop>
+        <source src="wham-last-christmas.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="btn-control-audio" title="Silenciar / Reproducir música" aria-label="Control de audio">
+        🔔
+    </button>
+
+    <div id="bienvenida-overlay">
+        <div class="modal-apertura">
+            <div class="inner-frame">
+                <span class="icon-sobre">✉️</span>
+                <h2>Familia Reyes</h2>
+                <p>Toca para abrir tu invitación</p>
+                <button id="btn-abrir" class="btn-abrir-invitacion">Abrir Tarjeta 🎄</button>
+            </div>
+        </div>
+    </div>
+
     <main class="invitation-card">
         <div class="inner-border">
             
             <div class="icon">✨ 🎄 ✨</div>
-            <p class="subtitle">Reunión Familia Reyes </p>
+            <p class="subtitle">Reunión Familia Reyes</p>
             <h1>Cena de Navidad <strong>2026</strong></h1>
             
             <p class="message">
@@ -184,13 +303,15 @@
             </p>
 
             <div class="divider"></div>
-            <div align = "center">
-                <img src="foto_familiar.jpeg" alt="Fotografía familiar" class="foto_fam"> <!-- height="250" width="440"-->
+
+            <div>
+                <img src="foto_familiar.jpeg" alt="Fotografía familiar" class="foto_fam">
                 <p class="subtitle">Continuemos creando recuerdos que perdurarán por siempre</p>
                 <p class="subtitle"><strong>✨Los abuelitos estarían orgullosos de vernos a todos juntos✨</strong></p>
-
             </div>
+
             <div class="divider"></div>
+
             <section class="details-grid">
                 <div class="detail-item">
                     <span class="emoji">📅</span>
@@ -205,8 +326,10 @@
                     <div class="detail-text">
                         <table>
                             <thead>
-                                <th><strong>Hora Inicio |</strong></th>
-                                <th><strong>Hora Fin</strong></th>
+                                <tr>
+                                    <th>Hora Inicio |</th>
+                                    <th>Hora Fin</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -215,29 +338,54 @@
                                 </tr>
                             </tbody>
                         </table>
-                       <!-- <strong>Hora Inicio | Hora Fin</strong> <p>13:00 HS | 21:00 HS</p>-->
-                        
                     </div>
                 </div>
 
                 <div class="detail-item">
-                    <a href="https://maps.app.goo.gl/ynhxePHMzNLjifQs8" target="_blank" rel="noopener" class="direccion" style="color: #ffffff; text-decoration: none;" >
-                    <span class="emoji">📍</span>
-                    <div class="detail-text">
-                        <strong>Lugar</strong>
-                        <a href="https://maps.app.goo.gl/ynhxePHMzNLjifQs8" target="_blank" rel="noopener" class="direccion" style="color: #ffffff">
-                            JARDIN EL CIPRES , calle el nopalito, sin número, pueblo Madin Viejo, Atizapan de Zaragoza, (presa Madin)
-                        </a>
-                        </a>
-                    </div>
+                    <a href="https://maps.app.goo.gl/ynhxePHMzNLjifQs8" target="_blank" rel="noopener" class="link-item">
+                        <span class="emoji">📍</span>
+                        <div class="detail-text">
+                            <strong>Lugar (Toca para ver mapa)</strong>
+                            <p style="color: #ffffff;">JARDIN EL CIPRES, calle el nopalito, sin número, pueblo Madin Viejo, Atizapan de Zaragoza, (presa Madin)</p>
+                        </div>
+                    </a>
                 </div>
-
             </section>
-
-
 
         </div>
     </main>
+
+    <script>
+        const btnAbrir = document.getElementById('btn-abrir');
+        const overlay = document.getElementById('bienvenida-overlay');
+        const musica = document.getElementById('musica');
+        const btnControlAudio = document.getElementById('btn-control-audio');
+
+        // Al hacer clic en "Abrir Tarjeta"
+        btnAbrir.addEventListener('click', () => {
+            musica.play().catch(err => {
+                console.warn("Autoplay bloqueado:", err);
+            });
+
+            // Animación de salida suave
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 600);
+        });
+
+        // Botón flotante para pausar o volver a poner la música
+        btnControlAudio.addEventListener('click', () => {
+            if (musica.paused) {
+                musica.play();
+                btnControlAudio.textContent = '🔔';
+            } else {
+                musica.pause();
+                btnControlAudio.textContent = '🔕';
+            }
+        });
+    </script>
 
 </body>
 </html>
