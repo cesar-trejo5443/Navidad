@@ -267,6 +267,17 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        .direction{
+            display: block;
+            width: 100%;
+            max-width: 500px; 
+            height: auto;  
+            /*aspect-ratio: 16 / 9; */
+            margin: 0 auto 20px auto; 
+            border-radius: 12px;
+            border: 1px solid var(--dorado);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+        }
     </style>
 </head>
 <body>
@@ -347,11 +358,17 @@
                         <div class="detail-text">
                             <strong>Lugar (Toca para ver mapa)</strong>
                             <p style="color: #ffffff;">JARDIN EL CIPRES, calle el nopalito, sin número, pueblo Madin Viejo, Atizapan de Zaragoza, (presa Madin)</p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2031.8781763179338!2d-99.2679167!3d19.533083299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDMxJzU5LjEiTiA5OcKwMTYnMDQuNSJX!5e1!3m2!1ses-419!2smx!4v1792422445025!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen="" loading="lazy" class="direction"></iframe>
                         </div>
                     </a>
                 </div>
+                <div class="detail-item">
+                    <div class="detail-text">
+                        <strong>TEMÁTICA:</strong> <p>Accesorios Navideños</p>
+                        <p>Te esperamos con el mejor outfit navideño que tengas 🎄</p>
+                    </div>
+                </div>
             </section>
-
         </div>
     </main>
 
@@ -361,7 +378,6 @@
         const musica = document.getElementById('musica');
         const btnControlAudio = document.getElementById('btn-control-audio');
 
-        // Al hacer clic en "Abrir Tarjeta"
         btnAbrir.addEventListener('click', () => {
             musica.play().catch(err => {
                 console.warn("Autoplay bloqueado:", err);
@@ -375,7 +391,6 @@
             }, 600);
         });
 
-        // Botón flotante para pausar o volver a poner la música
         btnControlAudio.addEventListener('click', () => {
             if (musica.paused) {
                 musica.play();
